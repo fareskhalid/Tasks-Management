@@ -1,0 +1,9 @@
+.env
+.local.env
+.production.env
+
+composer.lock
+
+vendor
+vendor/
+vendor/*
