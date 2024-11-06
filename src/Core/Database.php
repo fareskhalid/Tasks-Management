@@ -16,6 +16,7 @@
                 $dsn = "{$config['driver']}:host={$config['host']};dbname={$config['db_name']};charset={$config['charset']}";
                 $this->connection = new PDO($dsn, $config['user'], $config['password']);
                 $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 die('Database Connection Failed: ' . $e->getMessage());
             }

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+// error_reporting(0); // Uncomment in production
+
 session_start();
 
 use 
