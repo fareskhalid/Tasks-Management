@@ -12,6 +12,18 @@ function env(string $value, string $defalut = '')
     return $_ENV[$value] ?? $defalut;
 }
 
+function assets(string $value): string
+{
+    $root_dir = explode('/', $_SERVER['DOCUMENT_ROOT']);
+    $root_path = '';
+
+    if (end($root_dir) !== 'public') {
+        $root_path = 'public';
+    }
+
+    return $root_path . '/assets/' . $value;
+}
+
 function view(string $view, array $data = [])
 {
     extract($data);
