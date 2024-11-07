@@ -1,16 +1,40 @@
-@media screen and (max-width: 425px) {
-    h1 {
-        font-size: 1rem;
-    }
-    
-    a {
-        font-size: 0.7rem !important;
-    }   
+.bg-indigo {
+    background-color: #6610f2;
+}
+
+.bg-indigo-900 {
+    background-color: #340988;
+}
+
+.bg-purple {
+    background-color: #6f42c1;
+}
+
+.text-blue-100 {
+    color: #cfe2ff;
+}
+.text-indigo-light {
+    color: #e0cffc
+}
+
+.tasks .task:hover {
+    cursor: pointer;
+    background-color: #520dc2;
+    transition: all 0.1s;
+}
+
+h2.tasks-header::before,
+h2.tasks-header::after{
+    content: '';
+    display: inline-block;
+    width: 25vw;
+    height: 1px;
+    border: 1px solid #eee;
 }
 
 div#add-task {
     display: flex;
-    position: absolute;
+    position: fixed;
     right: 20px;
     bottom: 20px;
     width: 50px;

@@ -37,6 +37,17 @@ class Task extends Model
 
         return $stmt->fetch();
     }
+	
+	public function belongsToUser(int $task_id, int $user_id)
+	{
+		$q = 'SELECT * FROM tasks WHERE id = :task_id AND user_id = :user_id';
+		$stmt = $this->db->prepare($q);
+		$stmt->bindParam(':task_id', $task_id);
+		$stmt->bindParam(':user_id', $user_id);
+		$stmt->execute();
+		
+		return $stmt->fetch();
+	}
 
     public function edit(array $task): bool
     {

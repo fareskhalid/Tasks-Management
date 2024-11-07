@@ -15,19 +15,20 @@ function env(string $value, string $defalut = '')
 function assets(string $value): string
 {
     $root_dir = explode('/', $_SERVER['DOCUMENT_ROOT']);
-    $root_path = '';
+    $root_path = '/';
 
     if (end($root_dir) !== 'public') {
-        $root_path = 'public';
+        $root_path = '/public/';
     }
 
-    return $root_path . '/assets/' . $value;
+    return $root_path . 'assets/' . $value;
 }
 
 function view(string $view, array $data = [])
 {
     extract($data);
     require BASE_DIR . 'src/views/' . $view . '.view.php';
+	return;
 }
 
 function views_path(string $path = ''): string
@@ -48,8 +49,8 @@ function taskStatus(string $status): string
 function taskStatusColor(string $status): string
 {
     return match($status) {
-        'pending'       => 'warning',
-        'in_progress'   => 'primary',
-        'completed'     => 'success',
+        'pending'       => 'warning text-dark',
+        'in_progress'   => 'primary text-white',
+        'completed'     => 'success text-white',
     };
 }

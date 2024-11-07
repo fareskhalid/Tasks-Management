@@ -9,6 +9,24 @@ use TaskManagementSystem\Models\User;
 
 class TaskController extends Controller
 {
+	public function index()
+	{
+		if (! isset($_SESSION['tasks_uid'])) {
+			$this->redirect('/');
+		}
+		
+		// get task data and check if the user is authorized to view it
+		$task = new Task();
+		$task_id = $_GET['id'];
+		$task = $task->belongsToUser($task_id, $_SESSION['tasks_uid']);
+		
+		if ($task) {
+			view('task/index', ['task' => $task]);
+		}
+		
+		$this->redirect('/');
+	}
+	
     public function create()
     {
         $error_message = '';
@@ -37,7 +55,7 @@ class TaskController extends Controller
     {
         $task_id = $_GET['id'];
 
-        // check if the user not is loged in
+        // check if the user not is logged in
         if (! User::authenticated()) {
             $this->redirect('/');
         }
@@ -95,7 +113,7 @@ class TaskController extends Controller
         $task_id = $_GET['id'];
         $task = new Task();
 
-        // check if the user not is loged in
+        // check if the user not is logged in
         if (! User::authenticated()) {
             $this->redirect('/');
         }

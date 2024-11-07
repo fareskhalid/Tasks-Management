@@ -6,6 +6,7 @@ use TaskManagementSystem\Controllers\UserController;
 
 $router->get('/', HomeController::class, 'index');
 
+$router->get('/task', TaskController::class, 'index');
 $router->post('/task', TaskController::class, 'create');
 $router->get('/task/edit', TaskController::class, 'edit');
 $router->post('/task/edit', TaskController::class, 'update');
