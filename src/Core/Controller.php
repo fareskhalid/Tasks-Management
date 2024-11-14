@@ -1,12 +1,13 @@
 <?php
-
-namespace TaskManagementSystem\Core;
-
-class Controller
-{
-    protected function redirect(string $url): never
+    declare(strict_types=1);
+    
+    namespace TaskManagementSystem\Core;
+    
+    class Controller
     {
-        header("Location: $url");
-        exit;
+        protected function redirect(string $url): never
+        {
+            header("Location: $url");
+            exit;
+        }
     }
-}

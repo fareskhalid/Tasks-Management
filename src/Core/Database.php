@@ -1,17 +1,18 @@
 <?php
+    
     namespace TaskManagementSystem\Core;
-
+    
     use PDO;
     use PDOException;
-
-    class Database 
+    
+    class Database
     {
         private static $instance = null;
         private $connection;
-
+        
         private function __construct()
         {
-            $config = include BASE_DIR ."/config/database.php";
+            $config = include BASE_DIR . "/config/database.php";
             try {
                 $dsn = "{$config['driver']}:host={$config['host']};dbname={$config['db_name']};charset={$config['charset']}";
                 $this->connection = new PDO($dsn, $config['user'], $config['password']);
@@ -21,13 +22,13 @@
                 die('Database Connection Failed: ' . $e->getMessage());
             }
         }
-
+        
         public static function getInstance()
         {
-            if (! self::$instance) {
+            if (!self::$instance) {
                 self::$instance = new Database();
             }
-
+            
             return self::$instance->connection;
         }
     }
